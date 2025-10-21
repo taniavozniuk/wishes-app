@@ -1,0 +1,39 @@
+{
+  "wishes": [
+    {
+      "id": 1,
+      "title": "Trip in France",
+      "image": "https://www.trafalgar.com/media/h2ulw0zb/france-paris-eiffel-tower-trocadero-square-at-sunrise-1158630644-1920x1280.jpg?center=0.5%2C0.5&format=webp&mode=crop&width=1000&height=1000&quality=80",
+      "description": "Visit everything what I want",
+      "price": 1000
+    },
+    {
+      "id": 2,
+      "title": "Safari in Kenya",
+      "image": "https://nomadicessentialstravel.com/wp-content/uploads/2024/09/51aa63437cde7f6b577f67d3fcf25a16-1-1-990x490.webp",
+      "description": "See lions, elephants, and giraffes in the wild",
+      "price": 2500
+    },
+    {
+      "id": 3,
+      "title": "Explore Japan",
+      "image": "https://explore-live.s3.eu-west-1.amazonaws.com/medialibraries/explore/explore-media/destinations/asia/japan/japan-banner.jpg?ext=.jpg&width=1920&format=webp&quality=80&v=201704211523%201920w",
+      "description": "Visit Tokyo, Kyoto and Mount Fuji",
+      "price": 3000
+    },
+    {
+      "id": 4,
+      "title": "Road trip across USA",
+      "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29",
+      "description": "From New York to Los Angeles",
+      "price": 4000
+    },
+    {
+      "id": 5,
+      "title": "Relax in Maldives",
+      "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+      "description": "Enjoy the beach and turquoise water",
+      "price": 5000
+    }
+  ]
+}
