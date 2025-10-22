@@ -8,14 +8,15 @@
 }
 
 .card-wish {
-  width: 300px;
+  width: 100%;
+
   padding: 15px;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
 
   border-radius: 10px;
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
 .title {
@@ -84,8 +85,39 @@
   color: white;
 }
 
-.pagination{
+.pagination {
   margin-top: 40px;
   align-items: center;
   text-align: center;
+  display: flex;
+  gap: 80px;
+  justify-content: center;
+}
+
+.prev,
+.next {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.filer:hover {
+  background-color: rgba(255, 255, 255, 0.549);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.275);
+  border: 1px solid rgba(255, 255, 255, 0.548);
+}
+
+.next:hover {
+  background-color: rgba(255, 255, 255, 0.549);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.275);
+  border: 1px solid rgba(255, 255, 255, 0.548);
+}
+
+.page {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 15px;
 }
