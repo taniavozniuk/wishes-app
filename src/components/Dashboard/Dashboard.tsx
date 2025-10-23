@@ -6,11 +6,16 @@ import type { Filters } from "../../types/Filters";
 interface WhisesProps {
   wishes: Wishes[];
   filters: Filters;
+  onDeleteClick: (id: number) => void;
 }
 
 const ITEMS_PER_PAGE = 4;
 
-export const Dashboard: React.FC<WhisesProps> = ({ wishes, filters }) => {
+export const Dashboard: React.FC<WhisesProps> = ({
+  wishes,
+  filters,
+  onDeleteClick,
+}) => {
   const [wishesData, setWishesData] = useState<Wishes[]>(wishes);
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParam = parseInt(searchParams.get("page") || "1");
@@ -26,6 +31,12 @@ export const Dashboard: React.FC<WhisesProps> = ({ wishes, filters }) => {
   useEffect(() => {
     setWishesData(wishes);
   }, [wishes]);
+
+  useEffect(() => {
+    if (currentPage > totalPages) {
+      setCurrentPage(Math.max(totalPages, 1));
+    }
+  }, [wishesData, currentPage, totalPages]);
 
   useEffect(() => {
     const sortBy = "dateAdded";
@@ -64,7 +75,12 @@ export const Dashboard: React.FC<WhisesProps> = ({ wishes, filters }) => {
               <p className={styles.description}>{item.description}</p>
               <p className={styles.price}>Price: {item.price} $</p>
               <div className={styles.Btwrap}>
-                <button className={styles.delete}>Delete</button>
+                <button
+                  className={styles.delete}
+                  onClick={() => onDeleteClick(item.id)}
+                >
+                  Delete
+                </button>
                 <button className={styles.update}>Update</button>
                 <button className={styles.details}>Details</button>
               </div>

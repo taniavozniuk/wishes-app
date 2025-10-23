@@ -20,12 +20,21 @@ export const wishGet = async () => {
   }
 };
 
-export const wishPost = async (WishData: WishData) => {
+export const wishPost = async (wish: Omit<WishData, "id">) => {
   try {
-    const response = await apiClient.post("?action=post", WishData);
+    const response = await apiClient.post("?action=post", wish);
     return response.data;
   } catch (err) {
     console.log(err);
     throw err;
+  }
+};
+
+export const wishDelete = async (id: number) => {
+  try {
+    const response = await apiClient.delete(`${id}?action=delete`);
+    return response.data;
+  } catch (err) {
+    console.error("Failer to dalete wish", err);
   }
 };

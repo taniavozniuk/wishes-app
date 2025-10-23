@@ -1,14 +1,6 @@
 {
   "wishes": [
     {
-      "id": "1",
-      "title": "Trip in France",
-      "image": "https://www.trafalgar.com/media/h2ulw0zb/france-paris-eiffel-tower-trocadero-square-at-sunrise-1158630644-1920x1280.jpg?center=0.5%2C0.5&format=webp&mode=crop&width=1000&height=1000&quality=80",
-      "description": "Visit everything what I want",
-      "price": 1000,
-      "dateAdded": "2025-10-01"
-    },
-    {
       "id": "2",
       "title": "Safari in Kenya",
       "image": "https://nomadicessentialstravel.com/wp-content/uploads/2024/09/51aa63437cde7f6b577f67d3fcf25a16-1-1-990x490.webp",
@@ -39,46 +31,6 @@
       "description": "Enjoy the beach and turquoise water",
       "price": 5000,
       "dateAdded": "2025-05-15"
-    },
-    {
-      "id": "46b1",
-      "title": "",
-      "image": "",
-      "description": "",
-      "price": 0,
-      "dateAdded": "2025-10-22"
-    },
-    {
-      "id": "30d5",
-      "title": "asdasd",
-      "image": "asdasd",
-      "description": "asdasdas",
-      "price": 1111111111,
-      "dateAdded": "2025-10-22"
-    },
-    {
-      "id": "5bed",
-      "title": "me",
-      "image": "https://synevyr-park.in.ua/wp-content/uploads/2021/08/Skhyly_hory_Strymba_SashaBystrikov_Viki-liubyt-Zemliu.jpg",
-      "description": "asdasd",
-      "price": 10000000,
-      "dateAdded": "2025-10-22"
-    },
-    {
-      "id": "2956",
-      "title": "dsa",
-      "image": "https://media.dyvys.info/2017/05/mountains-1366x768-006.jpg",
-      "description": "asdasd",
-      "price": 5,
-      "dateAdded": "2025-10-22"
-    },
-    {
-      "id": 0,
-      "title": "Tania",
-      "image": "none",
-      "description": "Vozniuk",
-      "price": 1965,
-      "dateAdded": "2025-10-23"
     }
   ]
 }

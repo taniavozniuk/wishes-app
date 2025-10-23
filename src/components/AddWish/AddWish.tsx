@@ -12,7 +12,6 @@ interface AddWishProps {
 
 export const AddWish: React.FC<AddWishProps> = ({ onClick, handleWishAdded }) => {
   const [formData, setFormData] = useState({
-    id: 0,
     title: "",
     image: "",
     description: "",
@@ -23,7 +22,6 @@ export const AddWish: React.FC<AddWishProps> = ({ onClick, handleWishAdded }) =>
     e.preventDefault();
 
     const newWish: WishData = {
-      id: formData.id,
       title: formData.title,
       image: formData.image,
       description: formData.description,
@@ -103,7 +101,7 @@ export const AddWish: React.FC<AddWishProps> = ({ onClick, handleWishAdded }) =>
             }
           />
         </div>
-        <button>Submit</button>
+        <button className={styles.sub}>Submit</button>
       </form>
     </div>
   );
