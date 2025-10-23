@@ -1,0 +1,42 @@
+.Box {
+  position: relative;
+
+}
+
+
+.label {
+  font-family: "Aileron", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  color: #0c0b09;
+  margin: 0 0 8px 0;
+}
+
+.input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 51px;
+  border: 1px solid #615b52;
+  border-radius: 8px;
+  background-color: transparent;
+  font-family: "Aileron", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 10px;
+  color: #615b52;
+}
+
+
+.clearButton {
+  width: 37px;
+  height: 37px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}

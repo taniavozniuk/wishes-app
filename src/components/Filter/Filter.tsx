@@ -16,7 +16,12 @@ export const Filter: React.FC<FilterProps> = ({ onClick, onFilterChange }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFilters((prev) => ({ ...prev, [name]: value }));
+
+    if (name === "date") {
+      setFilters((prev) => ({ ...prev, date: value as "newest" | "oldest" }));
+    } else if (name === "price") {
+      setFilters((prev) => ({ ...prev, price: value as "high" | "low" }));
+    }
   };
 
   const handleApply = () => {
@@ -32,17 +37,22 @@ export const Filter: React.FC<FilterProps> = ({ onClick, onFilterChange }) => {
         </button>
       </div>
       <div className={styles.filters}>
-        <label>
+        <label className={styles.label}>
           Date:
-          <select name="date" value={filters.date} onChange={handleChange}>
+          <select name="date" value={filters.date} onChange={handleChange} className={styles.date}>
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
           </select>
         </label>
 
-        <label>
+        <label className={styles.label}>
           Price:
-          <select name="price" value={filters.price} onChange={handleChange}>
+          <select
+            name="price"
+            value={filters.price}
+            className={styles.price}
+            onChange={handleChange}
+          >
             <option value="high">Price high to low</option>
             <option value="low">Price low to high</option>
           </select>

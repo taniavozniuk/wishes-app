@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import type { Wishes } from "../../types/wishes";
 import styles from "./Dashboard.module.scss";
 import type { Filters } from "../../types/Filters";
-
 interface WhisesProps {
   wishes: Wishes[];
   filters: Filters;
@@ -24,7 +23,10 @@ export const Dashboard: React.FC<WhisesProps> = ({ wishes, filters }) => {
     startIndex + ITEMS_PER_PAGE
   );
 
-  // синхронізація state з URL
+  useEffect(() => {
+    setWishesData(wishes);
+  }, [wishes]);
+
   useEffect(() => {
     const sortBy = "dateAdded";
     const dateOrder = filters.date === "newest" ? "desc" : "asc";
@@ -32,7 +34,6 @@ export const Dashboard: React.FC<WhisesProps> = ({ wishes, filters }) => {
     fetch(`http://localhost:3001/wishes?_sort=${sortBy}&_order=${dateOrder}`)
       .then((res) => res.json())
       .then((data) => {
-        // сортування по ціні на фронтенді
         const sorted = [...data].sort((a, b) =>
           filters.price === "high" ? b.price - a.price : a.price - b.price
         );

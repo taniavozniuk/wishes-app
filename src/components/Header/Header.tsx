@@ -5,10 +5,12 @@ import type { Filters } from "../../types/Filters";
 
 interface HeaderProps {
   onFilterChange: (filters: Filters) => void;
+  setOpenAdd: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ onFilterChange }) => {
+export const Header: React.FC<HeaderProps> = ({ onFilterChange, setOpenAdd }) => {
   const [openFilte, setOpenFilte] = useState(false);
+
   return (
     <div className="header">
       <div className="BtWrap">
@@ -26,7 +28,11 @@ export const Header: React.FC<HeaderProps> = ({ onFilterChange }) => {
             />
           </div>
         )}
-        <button className="add">Add</button>
+        <button className="add" onClick={() => setOpenAdd()}>
+          Add new wish
+        </button>
+
+        
       </div>
     </div>
   );
