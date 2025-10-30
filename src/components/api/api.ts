@@ -38,3 +38,13 @@ export const wishDelete = async (id: number) => {
     console.error("Failer to dalete wish", err);
   }
 };
+
+export const wishPut = async (id: number, updatedWish: WishData) => {
+  try {
+    const response = await apiClient.put(`${id}?action=update`, updatedWish);
+    return response.data;
+  } catch (err) {
+    console.error("Failed to update wish:", err);
+    throw err;
+  }
+};

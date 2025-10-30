@@ -7,6 +7,7 @@ interface WhisesProps {
   wishes: Wishes[];
   filters: Filters;
   onDeleteClick: (id: number) => void;
+  onUpdateClick: (wish: Wishes) => void;
 }
 
 const ITEMS_PER_PAGE = 4;
@@ -15,6 +16,7 @@ export const Dashboard: React.FC<WhisesProps> = ({
   wishes,
   filters,
   onDeleteClick,
+  onUpdateClick,
 }) => {
   const [wishesData, setWishesData] = useState<Wishes[]>(wishes);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -68,7 +70,6 @@ export const Dashboard: React.FC<WhisesProps> = ({
     <>
       <div className={styles["whishes-list"]}>
         {currentWishes.map((item) => (
-          <>
             <div className={styles["card-wish"]} key={item.id}>
               <h2 className={styles.title}>{item.title}</h2>
               <img src={item.image} alt={item.title} className={styles.image} />
@@ -81,11 +82,10 @@ export const Dashboard: React.FC<WhisesProps> = ({
                 >
                   Delete
                 </button>
-                <button className={styles.update}>Update</button>
+                <button className={styles.update}  onClick={() => onUpdateClick(item)}>Update</button>
                 <button className={styles.details}>Details</button>
               </div>
             </div>
-          </>
         ))}
       </div>
 

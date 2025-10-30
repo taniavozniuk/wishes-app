@@ -12,6 +12,7 @@ import { DeleteWish } from "./components/DeleteWish/DeleteWish";
 function App() {
   const [wishes, setWishes] = useState<Wishes[]>([]);
   const [selectedWishId, setSelectedWishId] = useState<number | null>(null);
+  const [editWish, setEditWish] = useState<Wishes | null>(null);
   const [openAdd, setOpenAdd] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [filters, setFilters] = useState<Filters>({
@@ -31,7 +32,6 @@ function App() {
   useEffect(() => {
     fetchWishes();
   }, []);
-  
 
   const handleWishAdded = () => {
     fetchWishes();
@@ -41,9 +41,9 @@ function App() {
   const handleDelete = async (id: number) => {
     try {
       await wishDelete(id);
-      await fetchWishes()
+      await fetchWishes();
       setWishes((prev) => prev.filter((w) => w.id !== id));
-      setOpenDelete(false)
+      setOpenDelete(false);
     } catch (err) {
       console.log("delete err", err);
     }
@@ -57,25 +57,32 @@ function App() {
   return (
     <>
       <Header onFilterChange={setFilters} setOpenAdd={() => setOpenAdd(true)} />
-ddddd
       {/* <Routes> */}
       <Dashboard
         wishes={wishes}
         filters={filters}
         onDeleteClick={handleDeleteClick}
+        onUpdateClick={(wishes: Wishes) => {
+          setEditWish(wishes);
+          setOpenAdd(true);
+        }}
       />
       {/* </Routes> */}
 
       {openAdd && (
         <div className="add-modal">
           <AddWish
-            onClick={() => setOpenAdd(false)}
+            onClick={() => {
+              setOpenAdd(false);
+              setEditWish(null);
+            }}
             handleWishAdded={handleWishAdded}
+            existingWish={editWish}
           />
         </div>
       )}
 
-      {openDelete && selectedWishId !== null &&(
+      {openDelete && selectedWishId !== null && (
         <div className="delete-modal">
           <DeleteWish
             onClick={() => setOpenDelete(false)}
