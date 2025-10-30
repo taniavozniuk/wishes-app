@@ -17,20 +17,20 @@
       "dateAdded": "2025-04-15"
     },
     {
-      "title": "dasdas",
-      "image": "asdasds",
-      "description": "asdas",
-      "price": 11111111111,
-      "dateAdded": "2025-01-01",
-      "id": "4"
-    },
-    {
       "id": "5",
       "title": "Relax in Maldives",
       "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
       "description": "Enjoy the beach and turquoise water",
       "price": 5000,
       "dateAdded": "2025-05-15"
+    },
+    {
+      "title": "sdfsdfsdfsd",
+      "image": "fsdfsd",
+      "description": "fsdfdsf",
+      "price": 432423,
+      "dateAdded": "2025-10-30",
+      "id": "4c38"
     }
   ]
 }

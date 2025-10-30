@@ -1,16 +1,15 @@
 import "./App.css";
 import { Dashboard } from "./components/Dashboard/Dashboard";
 import { Header } from "./components/Header/Header";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { Filters } from "./types/Filters";
-import type { Wishes } from "./types/wishes";
-import { wishDelete, wishGet } from "./components/api/api";
 import { AddWish } from "./components/AddWish/AddWish";
 import { DeleteWish } from "./components/DeleteWish/DeleteWish";
-// import { Route, Routes } from "react-router-dom";
+import type { Wishes } from "./types/wishes";
+import { useWishes } from "./context/useWishes";
 
 function App() {
-  const [wishes, setWishes] = useState<Wishes[]>([]);
+  const { wishes, deleteWish } = useWishes();
   const [selectedWishId, setSelectedWishId] = useState<number | null>(null);
   const [editWish, setEditWish] = useState<Wishes | null>(null);
   const [openAdd, setOpenAdd] = useState(false);
@@ -20,54 +19,32 @@ function App() {
     price: "high",
   });
 
-  const fetchWishes = async () => {
-    try {
-      const data = await wishGet();
-      setWishes(data);
-    } catch (err) {
-      console.log("Eror fetch wishes", err);
-    }
-  };
-
-  useEffect(() => {
-    fetchWishes();
-  }, []);
-
-  const handleWishAdded = () => {
-    fetchWishes();
-    setOpenAdd(false);
-  };
-
-  const handleDelete = async (id: number) => {
-    try {
-      await wishDelete(id);
-      await fetchWishes();
-      setWishes((prev) => prev.filter((w) => w.id !== id));
-      setOpenDelete(false);
-    } catch (err) {
-      console.log("delete err", err);
-    }
-  };
-
   const handleDeleteClick = (id: number) => {
     setSelectedWishId(id);
     setOpenDelete(true);
   };
 
+  const handleConfirmDelete = async () => {
+    if (selectedWishId !== null) {
+      await deleteWish(selectedWishId);
+      setOpenDelete(false);
+      setSelectedWishId(null);
+    }
+  };
+
   return (
     <>
       <Header onFilterChange={setFilters} setOpenAdd={() => setOpenAdd(true)} />
-      {/* <Routes> */}
+
       <Dashboard
         wishes={wishes}
         filters={filters}
         onDeleteClick={handleDeleteClick}
-        onUpdateClick={(wishes: Wishes) => {
-          setEditWish(wishes);
+        onUpdateClick={(wish) => {
+          setEditWish(wish);
           setOpenAdd(true);
         }}
       />
-      {/* </Routes> */}
 
       {openAdd && (
         <div className="add-modal">
@@ -76,7 +53,6 @@ function App() {
               setOpenAdd(false);
               setEditWish(null);
             }}
-            handleWishAdded={handleWishAdded}
             existingWish={editWish}
           />
         </div>
@@ -86,7 +62,7 @@ function App() {
         <div className="delete-modal">
           <DeleteWish
             onClick={() => setOpenDelete(false)}
-            handleDelete={() => handleDelete(selectedWishId)}
+            handleDelete={handleConfirmDelete}
           />
         </div>
       )}
